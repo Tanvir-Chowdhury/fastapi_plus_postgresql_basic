@@ -21,7 +21,7 @@ def create_new_book(book: schemas.BookCreate, db: Session = Depends(get_db)):
     return services.create__book(db, book)
 
 
-@app.put("/books/{book_id}", response_model=list[schemas.Book])
+@app.put("/books/{book_id}", response_model=schemas.Book)
 def update_book(  book: schemas.BookCreate ,book_id: int, db: Session = Depends(get_db)):
     db_update = services.update_book(db, book, book_id)
     if not db_update:
